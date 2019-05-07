@@ -77,6 +77,7 @@ def add(nodeServer, secret, recipientId, amount, publicKey=None, secondSecret=No
         reqArgs['secondSecret'] = secondSecret
     if message != None:
         reqArgs['message'] = message
+    print('转账交易')
     return http.put(nodeServer+_kPaths['add'], reqArgs, timeout=timeout)
 
 

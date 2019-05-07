@@ -30,7 +30,7 @@ def get(url, params=None, timeout=4000):
             data = json.loads(r.content)
             if data['success'] == True:
                 del data['success']
-                return {'done': True, 'data': data}
+                return data
             else:
                 return {'done': False, 'error': data['error']}
         else:
@@ -38,7 +38,6 @@ def get(url, params=None, timeout=4000):
 
     except Exception as e:
         return {'done': False, 'error': e.message}
-
 
 def put(url, body=None, timeout=4000):
     '''

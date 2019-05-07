@@ -5,8 +5,8 @@ import unittest
 import json
 import requests
 import accounts,blocks,delegates,lockvote,signatures,transactions
-
-
+import time
+import newAccount
 
 
 class ETest(unittest.TestCase):
@@ -35,7 +35,12 @@ class ETest(unittest.TestCase):
     def tearDownClass(self):
         # 必须使用 @ classmethod装饰器, 所有test运行完后运行一次
         print('close')
+    def test_addTransactions(self):
+        newAccount.AddTransactions()
 
+    def test_addDelegate(self):
+        newAccount.AddDelegate()
+'''
 
 #生成新账号
     def test_newAccount(self):
@@ -45,6 +50,16 @@ class ETest(unittest.TestCase):
         p=r['data']['publicKey']
         a=r['data']['address']
         return s,p,a
+    
+
+
+        # 转账
+    def test_addTransactions(self):
+        t=time.time()
+        a = random.randint(1, 1000)
+        accounts=int(t)+a
+        transactions.add(self.nodeServer, self.secret, self.recipientId, accounts)
+        print('addTransactions', transactions.add(self.nodeServer, self.secret, self.recipientId, accounts))
 
     def test_Account(self):
         resp = accounts.new(self.nodeServer, ent=128)
@@ -220,11 +235,7 @@ class ETest(unittest.TestCase):
     def test_getUnconfirmedTransactions(self):
         transactions.getUnconfirmedTransactions(self.nodeServer, senderPublicKey='', address='')
 
-#转账
-    def test_addTransactions(self):
-        a = random.randint(1, 10000)
-        transactions.add(self.nodeServer, self.secret, self.recipientId, a)
-        print('addTransactions', transactions.add(self.nodeServer, self.secret, self.recipientId, a))
+
 
 #延时转账
     def test_addDelayTransactions(self):
@@ -249,7 +260,7 @@ class ETest(unittest.TestCase):
 
 
 
-
+'''
 
 if __name__ == '__main__':
     # 在main()中加verbosity参数，可以控制输出的错误报告的详细程度

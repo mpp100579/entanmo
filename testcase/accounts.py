@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-'''
-'''
+
 
 import http_helper as http
 
