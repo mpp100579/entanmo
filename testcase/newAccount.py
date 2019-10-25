@@ -116,15 +116,16 @@ AddDelegate()
 
 
 # 注销代理人
-# def DelDelegate():
-#     time.sleep(2)
-#     list_account = get_account()
-#     url = list_account['url']
-#     secret = list_account['secret']
-#     delegates.delDelegate(nodeServer=url, secret=secret)
-#     print(u'delDelegate注销代理人',delegates.delDelegate(url, secret=secret)
-#
-# DelDelegate()
+def DelDelegate():
+    AddDelegate()
+    time.sleep(2)
+    list_account = get_account()
+    url = list_account['url']
+    secret = list_account['secret']
+    delegates.delDelegate(nodeServer=url, secret=secret)
+    print(u'delDelegate注销代理人',delegates.delDelegate(url, secret=secret))
+
+DelDelegate()
 
 #添加锁仓
 def AddLockvote():
